@@ -13,7 +13,9 @@ connectDb();
 
 app.use(cors({ origin: "*" }));
 app.use(morgan("dev"));
-app.use(allRoutes);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/api", allRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

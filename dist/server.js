@@ -15,7 +15,9 @@ const port = process.env.PORT || 5000;
 (0, db_1.default)();
 app.use((0, cors_1.default)({ origin: "*" }));
 app.use((0, morgan_1.default)("dev"));
-app.use(routes_1.default);
+app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: true }));
+app.use("/api", routes_1.default);
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
